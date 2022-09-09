@@ -1,4 +1,4 @@
-import { withMappable, MapTo } from '@adobe/aem-react-editable-components';
+import { EditableComponent, MapTo } from '@adobe/aem-react-editable-components';
 
 import './AEMImage.scss';
 import React from 'react'
@@ -36,7 +36,9 @@ const ImageV2Contents = (props) => {
 };
 
 const ImageV2Impl = (props) => {
-  // props.baseCssClass = 'cmp-image'
+    if (!props.baseCssClass) {
+      props.baseCssClass = 'cmp-image'
+    }
 
     const {isInEditor = false} = props;
     const cssClassName = (isInEditor) ? props.baseCssClass + ' cq-dd-image' : props.baseCssClass;
@@ -58,8 +60,10 @@ const EditConfig = {
     resourceType: RESOURCE_TYPE
 };
 
-MapTo(RESOURCE_TYPE)(ImageV2, EditConfig);
+console.log(globalProp?.something)
 
-const AEMImage = withMappable(ImageV2, EditConfig);
+const AEMImage = (props) => <EditableComponent config={EditConfig} {...props}><ImageV2 {...props} /></EditableComponent>
+
+MapTo(RESOURCE_TYPE)(ImageV2);
 
 export default AEMImage;

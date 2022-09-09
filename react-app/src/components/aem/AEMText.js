@@ -1,5 +1,4 @@
-import { withMappable, MapTo } from '@adobe/aem-react-editable-components';
-// import { TextV2, TextV2IsEmptyFn } from "@adobe/aem-core-components-react-base";
+import { EditableComponent, MapTo } from '@adobe/aem-react-editable-components';
 import React from 'react'
 
 const TextPlain = (props) => <div className={props.baseCssClass}><p className="cmp-text__paragraph">{props.text}</p></div>;
@@ -10,6 +9,10 @@ const TextRich = (props) => {
 };
 
 const Text = (props) => {
+    if (!props.baseCssClass) {
+        props.baseCssClass = 'cmp-text'
+    }
+
     const {richText = false} = props
 
     return richText ? <TextRich {...props} /> : <TextPlain {...props} />
@@ -23,8 +26,9 @@ const EditConfig = {
     resourceType: RESOURCE_TYPE
 };
 
-MapTo(RESOURCE_TYPE)(Text, EditConfig);
+const AEMText = (props) => <EditableComponent config={EditConfig} {...props}><Text {...props}/></EditableComponent>
 
-const AEMText = withMappable(Text, EditConfig);
+MapTo(RESOURCE_TYPE)(AEMText);
+
 
 export default AEMText;

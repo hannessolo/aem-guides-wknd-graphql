@@ -1,5 +1,5 @@
  // Import the withMappable API provided bu the AEM SPA Editor JS SDK
- import { withMappable, MapTo } from '@adobe/aem-react-editable-components';
+ import { EditableComponent, MapTo } from '@adobe/aem-react-editable-components';
  import React from 'react'
  import {RoutedLink} from "./RoutedLink";
 
@@ -26,6 +26,10 @@
  };
 
  const Title = (props) => {
+   if (!props.baseCssClass) {
+     props.baseCssClass = 'cmp-title'
+   }
+
    const elementType = (!!props.type) ? props.type.toString() : 'h3';
    return (
      <div className={props.baseCssClass}>
@@ -49,10 +53,10 @@
      resourceType: RESOURCE_TYPE // The sling:resourceType this component is mapped to
  };
 
+ // allows the component to be hardcoded into the SPA; <AEMTitle .../>
+const AEMTitle = (props) => <EditableComponent config={EditConfig} {...props}><Title /></EditableComponent>
+
  // MapTo allows the AEM SPA Editor JS SDK to dynamically render components added to SPA Editor Containers
- MapTo(RESOURCE_TYPE)(Title, EditConfig);
+ MapTo(RESOURCE_TYPE)(AEMTitle);
 
- // withMappable allows the component to be hardcoded into the SPA; <AEMTitle .../>
-const AEMTitle = withMappable(Title, EditConfig);
-
-export default AEMTitle;
+export default AEMTitle
