@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@adobe/aem-core-components-react-base": "^1.1.8",
-    "@adobe/aem-core-components-react-spa": "^1.2.0",
     "@adobe/aem-headless-client-js": "^3.0.1",
     "@adobe/aem-react-editable-components": "^1.1.5",
     "@adobe/aem-spa-component-mapping": "^1.1.1",
@@ -16,9 +14,9 @@
     "http-proxy-middleware": "^2.0.6",
     "sass": "^1.42.1",
     "normalize-scss": "^7.0.1",
-    "react": "^18.2.0",
+    "react": "^16.14.0",
     "react-currency-format": "^1.1.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
