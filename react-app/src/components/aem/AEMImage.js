@@ -60,8 +60,6 @@ const EditConfig = {
     resourceType: RESOURCE_TYPE
 };
 
-console.log(globalProp?.something)
-
 const AEMImage = (props) => <EditableComponent config={EditConfig} {...props}><ImageV2 {...props} /></EditableComponent>
 
 MapTo(RESOURCE_TYPE)(ImageV2);

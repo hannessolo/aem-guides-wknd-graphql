@@ -14,7 +14,7 @@ import Loading from './Loading';
 import { mapJsonRichText } from '../utils/renderRichText';
 import './AdventureDetail.scss';
 import { getAdventureByPath } from '../api/persistedQueries';
-import AEMResponsiveGrid from './aem/AEMResponsiveGrid';
+import { ResponsiveGrid } from '@adobe/aem-react-editable-components'
 
 const { REACT_APP_PUBLIC_URI } = process.env;
 
@@ -100,7 +100,7 @@ function AdventureDetailRender({ _path,
                 src={primaryImage._path} alt={title} />
             <div dangerouslySetInnerHTML={{ __html: description.html }}></div>
 
-            <AEMResponsiveGrid
+            <ResponsiveGrid
                 pagePath={`/content/wknd-app/us/en/home/adventure/${adventureName}`}
                 itemPath="root/responsivegrid" />
 

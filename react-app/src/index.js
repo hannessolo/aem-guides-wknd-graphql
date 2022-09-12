@@ -21,3 +21,18 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+// import { ModelManager } from "@adobe/aem-spa-page-model-manager";
+
+// // Initialize the ModelManager before invoking ReactDOM.render(...).
+// ModelManager.initialize().then(() => {
+//   const root = ReactDOM.createRoot(
+//     document.getElementById('root')
+//   );
+//
+//   root.render(<React.StrictMode>
+//     <App />
+//   </React.StrictMode>)
+// });
+//
+
