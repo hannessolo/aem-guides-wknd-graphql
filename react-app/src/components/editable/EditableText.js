@@ -12,13 +12,9 @@ const EditConfig = {
     resourceType: RESOURCE_TYPE
 };
 
-export const WrappedText = (props) => {
-    const Wrapped = withConditionalPlaceHolder(withStandardBaseCssClass(Text, "cmp-text"), textIsEmpty, "Text V2")
-    return <Wrapped {...props}/>
-};
+const WrappedText = withConditionalPlaceHolder(withStandardBaseCssClass(Text, "cmp-text"), textIsEmpty, "TextV2")
 
-
-const EditableText = (props) => <EditableComponent config={EditConfig} {...props}><WrappedText /></EditableComponent>
+const EditableText = (props) => <EditableComponent config={EditConfig} {...props}><WrappedText {...props} /></EditableComponent>
 
 MapTo(RESOURCE_TYPE)(EditableText);
 

@@ -14,10 +14,7 @@ const EditConfig = {
     resourceType: RESOURCE_TYPE
 };
 
-const WrappedImage = (props) => {
-    const Wrapped = withConditionalPlaceHolder(withStandardBaseCssClass(Image, "cmp-image"), imageIsEmpty, "Image V2");
-    return <Wrapped {...props}/>
-}
+const WrappedImage = withConditionalPlaceHolder(withStandardBaseCssClass(Image, "cmp-image"), imageIsEmpty, "Image V2");
 
 const EditableImage = (props) => <EditableComponent config={EditConfig} {...props}><WrappedImage /></EditableComponent>
 
