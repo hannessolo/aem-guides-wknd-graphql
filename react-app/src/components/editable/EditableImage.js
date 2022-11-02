@@ -1,0 +1,23 @@
+import { EditableComponent, MapTo } from '@adobe/aem-react-editable-components';
+import { Image, imageIsEmpty } from "./core/Image";
+import React from 'react'
+
+import './EditableImage.scss';
+import { withConditionalPlaceHolder } from "./core/util/withConditionalPlaceholder";
+import { withStandardBaseCssClass } from "./core/util/withStandardBaseCssClass";
+
+const RESOURCE_TYPE = "wknd-app/components/image";
+
+const EditConfig = {
+    emptyLabel: "Image",
+    isEmpty: imageIsEmpty,
+    resourceType: RESOURCE_TYPE
+};
+
+const WrappedImage = withConditionalPlaceHolder(withStandardBaseCssClass(Image, "cmp-image"), imageIsEmpty, "Image V2");
+
+const EditableImage = (props) => <EditableComponent config={EditConfig} {...props}><WrappedImage /></EditableComponent>
+
+MapTo(RESOURCE_TYPE)(EditableImage);
+
+export default EditableImage;
